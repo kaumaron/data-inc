@@ -8,7 +8,7 @@ with open('NYNeighborhoods.csv', 'rb') as csvfile:
     neighborhood_list.next() # skip header
     for row in neighborhood_list:
         if row[0] in neighborhood_zips: # if borough is in the dict, add new ZIPs
-            for i in range(2, len(row) - 1):
+            for i in range(2, len(row)): # REMOVED len(row) - 1, seemed to be chopping off the last zip in each set in CensusMap.py
                 neighborhood_zips[row[0]].append(row[i])
         else: # if borough is new, add it as key, then add all the associated ZIPs in the row
             neighborhood_zips[row[0]] = [row[2]]
